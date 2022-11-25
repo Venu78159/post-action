@@ -9,11 +9,12 @@
 			margin: 0%;
 		}
 		body{
-			background-color: #3c1053ff;
+			background-color: skyblue;
 		}
 		.div1{
 		text-align: center;
 		width: 20%;
+		
 		border: 1px solid black;
 		margin-left: 40%;
 		margin-top: 15%;
@@ -54,6 +55,14 @@
 			console.log(input)
 			let password=document.getElementById("password").value
 			console.log(password)
+			let select=document.getElementById("select").value
+			console.log(select)
+			var gmale=document.getElementById("male").checked
+			var gfemale=document.getElementById("female").checked
+			console.log(gmale,gfemale)
+			if(gmale==true) var gender="male"
+				else var gender="female"
+
 			document.getElementById("input").value=""
 			document.getElementById("password").value=""
 			fetch("http://localhost:4000/newData",{
@@ -61,7 +70,7 @@
 			headers:{
 				"Content-Type":"application/json"
 			},
-			body:JSON.stringify({name:input,age:password})
+			body:JSON.stringify({name:input,age:password,car:select,gender:gender})
 		})
 			
 		}
@@ -75,6 +84,17 @@
 		<h1 style="color: red;">LOGIN PAGE</h1>
 	<p><input class="input" type="text" placeholder="Enter User Name" id="input" /><br></p>
 	<p><input class="password" type="password" placeholder="Enter Password" id="password" /><br></p>
+	<p><select id="select">
+		<option value="select a course">select a course</option>
+		<option value="bsc">bsc</option>
+		<option value="bzc">bzc</option>
+	</select></p>
+		<p id="gender">
+			<input type="radio" name="gender" value="male" id="male">male
+			<input type="radio" name="gender" value="female" id="female" >female
+		</p>
+
+	
 	<button class="button" onclick="submit()">submit</button>
 	</div>
 </body>
